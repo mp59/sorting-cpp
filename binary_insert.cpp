@@ -4,15 +4,17 @@
 size_t find_place(int *array, size_t start, size_t stop, int value)
 {
 	size_t middle;
-	if (start == stop)
-		return start;
-	middle = (start + stop - 1) / 2;
-	if (array[middle] < value)
-		return find_place(array, middle + 1, stop, value);
-	else if (middle > start && array[middle-1] > value)
-		return find_place(array, start, middle - 1, value);
-	else
-		return middle;
+	while (true) {
+		if (start == stop)
+			return start;
+		middle = (start + stop - 1) / 2;
+		if (array[middle] < value)
+			start = middle + 1;
+		else if (middle > start && array[middle-1] > value)
+			stop = middle - 1;
+		else
+			return middle;
+	}
 }
 
 void binary_insert(int *array, size_t length)
