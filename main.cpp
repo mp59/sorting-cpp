@@ -7,10 +7,11 @@ int	main()
 {
 	size_t length, i;
 	length = 6;
+	// int arr[] = {2,-1,3,7,1,-5};
 	int arr[length];
-	random_fill(arr, length, 100);
+	random_fill(arr, length, 10);
 
-	binary_insert(arr, length);
+	bucket(arr, length, 0, 100);
 	for (i=0; i < length; i++)
 		std::cout << arr[i] << std::endl;
 	return 0;
