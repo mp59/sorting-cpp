@@ -7,12 +7,15 @@ def is_list_sorted(sorted_list):
             return False
     return True
 
-def check_output(runs):
+def check_output(runs, verbose=False):
     traceback = ''
     correct = 0
     for i in range(runs):
         out = subprocess.check_output('./main').decode()
-        if is_list_sorted(out.split()):
+        if verbose:
+            print(out)
+        out_list = list(map(int, out.split()))
+        if is_list_sorted(out_list):
             correct += 1
         else:
             traceback += out + '\n'
@@ -24,10 +27,11 @@ def check_output(runs):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('runs', type=int, default=10, nargs='?')
+    parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
     subprocess.run('make')
     print('')
-    check_output(args.runs)
+    check_output(args.runs, args.verbose)
 
 if __name__ == '__main__':
     main()
