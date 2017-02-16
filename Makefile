@@ -1,6 +1,6 @@
 include config.mk
 
-SRC = main.cpp bubble.cpp select.cpp insert.cpp binary_insert.cpp bucket.cpp
+SRC = main.cpp bubble.cpp select.cpp insert.cpp binary_insert.cpp bucket.cpp merge.cpp
 OBJ = ${SRC:.cpp=.o}
 
 all: options main
